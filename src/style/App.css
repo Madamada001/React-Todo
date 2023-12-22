@@ -1,0 +1,25 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+*{
+  margin: 0;
+  line-height: calc(1em + 0.5rem);
+}
+body{
+  background-color: #1f1f1f;
+  font-family: 'Blackwood Castle', sans-serif;
+}
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  display: inline-block;
+  background: none;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
