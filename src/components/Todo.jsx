@@ -30,8 +30,6 @@ const GroceryComponent = () => {
     [groceryItems]
   );
 
-  
-
   const handleChecked = (id, completed) => {
     setGroceryItems((prevState) =>
       prevState.map((item) =>
@@ -99,22 +97,20 @@ const GroceryComponent = () => {
   };
 
   const line_through = {
-    textDecoration: 'line-through',
-    textDecorationColor: '#ffffff',
-    textDecorationThickness: '1.5px', 
-    fontStyle: 'italics',
-    fontWeight: '100',
-  }
-
-  
+    textDecoration: "line-through",
+    textDecorationColor: "#ffffff",
+    textDecorationThickness: "1.5px",
+    fontWeight:100,
+  };
 
   return (
     <div className="todo__container ">
-     
-  <div className="items-container container">
-  <h1>Todo</h1>
-      <h4>You have <span>({taskCount})</span> task to be completed</h4>
-    <div className="input-container">
+      <div className="items-container container">
+        <h1>Todo</h1>
+        <h4>
+          You have <span>({taskCount})</span> task to be completed
+        </h4>
+        <div className="input-container">
           <input
             ref={inputRef}
             type="text"
@@ -126,8 +122,8 @@ const GroceryComponent = () => {
                 : (event) => setItem(event.target.value)
             }
           />
-          </div>
-    
+        </div>
+
         <div className="input-btn">
           {" "}
           <button onClick={handleAddItem} className="btn-add">
@@ -138,49 +134,41 @@ const GroceryComponent = () => {
           </button>
         </div>
         <div>
-        <ul className="todo-list">
-          {groceryItems.map((item) => (
-            <li key={item.id} className="list-items">
-              
-              <span
-                style={
-                 item.completed ? line_through : {}
-                }
-              >
-                {item.name}
-              </span>
-              <div className="input-btn_2">
-              <button
-                onClick={() => handleEditItem(item.id, item.name)}
-                className="btn-edit"
-                disabled={isEditing ? true : false}
-              >
-                <FaEdit />
-              </button>
-              <button
-                onClick={() => handleDeleteItem(item.id, item.completed)}
-                className="btn-delete"
-                disabled={isEditing ? true : false}
-              >
-               <MdDelete />
-              </button>
+          <ul className="todo-list">
+            {groceryItems.map((item) => (
+              <li key={item.id} className="list-items">
+                <span style={item.completed ? line_through : {}}>
+                  {item.name}
+                </span>
+                <div className="input-btn_2">
+                  <button
+                    onClick={() => handleEditItem(item.id, item.name)}
+                    className="btn-edit"
+                    disabled={isEditing ? true : false}
+                  >
+                    <FaEdit />
+                  </button>
+                  <button
+                    onClick={() => handleDeleteItem(item.id, item.completed)}
+                    className="btn-delete"
+                    disabled={isEditing ? true : false}
+                  >
+                    <MdDelete />
+                  </button>
 
-              <button
-                
-              
-                onClick={() => handleChecked(item.id, item.completed)}
-                disabled={isEditing}
-                className="btn-check"
-              >
-             <FaCheckSquare />
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-  
-    </div>
-    </div>
+                  <button
+                    onClick={() => handleChecked(item.id, item.completed)}
+                    disabled={isEditing}
+                    className="btn-check"
+                  >
+                    <FaCheckSquare />
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
